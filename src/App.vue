@@ -64,7 +64,7 @@ onMounted(() => {
       <button @click="play()" class="play">
         <div class="playdiv">‣</div>
       </button>
-      <audio id=“my-audio” src="/洛天依-上山岗.mp3"></audio>
+      <audio id=“my-audio” src="./洛天依-上山岗.mp3"></audio>
     </div>
 
   </div>

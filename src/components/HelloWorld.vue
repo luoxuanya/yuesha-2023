@@ -26,7 +26,7 @@ onMounted(() => {
 <template>
   <div ref="card" class="card">
     <div>
-      <img class="portrait" :src="'/img/'+props.name+'.jpg'" alt="头像">
+      <img class="portrait" :src="'./img/'+props.name+'.jpg'" alt="头像">
       <p v-text="props.name" class="name"></p>
     </div>
     <p class="text" v-html="props.context"></p>
