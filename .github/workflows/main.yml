@@ -35,6 +35,8 @@ jobs:
         with:
           node-version: 18
           cache: 'pnpm'
+      - name: Install PNPM
+        run: npm i -g pnpm
       - name: Install dependencies
         run: pnpm install
       - name: Build
