@@ -55,9 +55,8 @@ onMounted(() => {
 <template>
   <div class="container">
     <div class="left_container">
-      <HelloWorld class="list"
-        v-for="(item, index) in json" img="https://www.w3schools.com/w3images/forest.jpg" :context="item.context"
-        :name="item.name" />
+      <HelloWorld class="list" v-for="(item, index) in json" img="https://www.w3schools.com/w3images/forest.jpg"
+        :context="item.context" :name="item.name" />
     </div>
     <div class="right_container">
       <div class="sub"></div>
@@ -71,7 +70,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.list:first-child{
+.list:first-child {
   margin-top: 100vh;
 }
 
@@ -88,20 +87,18 @@ onMounted(() => {
   width: 60vw;
   height: 100vh;
   padding-left: 0;
-  
-  overflow-y: scroll
 
+  overflow-y: scroll
 }
 
 /* 此处的 div 可以依照情况替换成对应的元素名称 */
-.left_container::-webkit-scrollbar{
-         display:none
-    }
+.left_container::-webkit-scrollbar {
+  display: none
+}
 
 
 .right_container {
   width: 40vw
-  
 }
 
 .play {
@@ -137,9 +134,18 @@ onMounted(() => {
 
 
 
-@media screen and (max-width:600px){
-  .left_container{width: 100vw;}
-  .right_container{display:none; }
+@media screen and (max-width:600px) {
+  .left_container {
+    width: 100vw;
   }
 
+  .right_container {
+    display: none;
+  }
+
+  .list:first-child {
+    margin-top: 5vh;
+  }
+
+}
 </style>
