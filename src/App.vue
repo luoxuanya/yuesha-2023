@@ -11,33 +11,26 @@ import { createSubtitlePlayer, srtToJson } from "./store/instr";
 
 let json = data.values
 
-
-
-
 let srts = srt
 
 let tojson = ref()
 
 const store = useStore()
 
+let isPlay:boolean = false;
+
 function play() {
-
-  const lengt = data.values.length - 1
-  const div = document.querySelector(".list:last-child")
-  VueScrollTo.scrollTo(div, 230000)
   const audios = document.querySelector("audio") as HTMLAudioElement
-  audios.play()
-
-
+  if (audios.readyState >= 3&&!isPlay) {
+    const lengt = data.values.length - 1
+    const div = document.querySelector(".list:last-child")
+    VueScrollTo.scrollTo(div, 230000)
+    audios.play()
+    isPlay = true
+  }
 }
 
 onMounted(() => {
-  /*
-    nextTick(() => {
-      const lengt = data.values.length - 1
-      const div = document.querySelector(".lastfood")
-      VueScrollTo.scrollTo(div, 232000)
-    })*/
 
   srtToJson(srts, (error, result) => {
     tojson.value = result;
@@ -46,10 +39,16 @@ onMounted(() => {
     const SubtitlePlayer = createSubtitlePlayer(sub, audios, result)
     SubtitlePlayer()
 
-
+    audios.addEventListener('canplay', (event) => {
+      sub.textContent = "点击右下角按钮以播放"
+    });
   })
-})
-//:class="index === data.values.length - 1 ? 'lastfood' : ''" 
+
+
+});
+
+
+
 </script>
 
 <template>
@@ -59,7 +58,7 @@ onMounted(() => {
         :context="item.context" :name="item.name" />
     </div>
     <div class="right_container">
-      <div class="sub"></div>
+      <div class="sub">音频加载中，请勿播放</div>
       <button @click="play()" class="play">
         <div class="playdiv">‣</div>
       </button>
